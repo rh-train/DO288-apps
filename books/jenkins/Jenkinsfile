@@ -102,13 +102,13 @@ pipeline {
             steps {
                 timeout(time: 60, unit: 'MINUTES') {
                     input message: "Promote to Staging?"
-                
-              script {
-                openshift.withCluster() {
-                openshift.tag("${DEV_PROJECT}/books:latest", "${STAGE_PROJECT}/books:stage")
                 }
-	      }
-            }
+              	script {
+                	openshift.withCluster() {
+                	openshift.tag("${DEV_PROJECT}/books:latest", "${STAGE_PROJECT}/books:stage")
+                	}
+	        }
+            
         }
 
         stage('Deploy to Staging Env') {
